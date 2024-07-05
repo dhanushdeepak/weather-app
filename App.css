@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #434343, #282828);
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: backgroundAnimation 10s infinite alternate;
+}
+
+@keyframes backgroundAnimation {
+    0% { background: linear-gradient(135deg, #434343, #282828); }
+    50% { background: linear-gradient(135deg, #555555, #333333); }
+    100% { background: linear-gradient(135deg, #434343, #282828); }
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out, scaleUp 1s ease-in-out;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ff4b2b;
+    animation: colorChange 2s infinite alternate;
+}
+
+input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    border: 2px solid #ff4b2b;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 0 10px rgba(255, 75, 43, 0.5);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 2px solid #ff4b2b;
+    border-radius: 5px;
+    background: #ff4b2b;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    animation: pulse 1.5s infinite;
+}
+
+button:hover {
+    background: #e0431f;
+}
+
+#weather-result {
+    margin-top: 20px;
+    animation: slideIn 1s ease-in-out;
+}
+
+#weather-result img {
+    margin-top: 10px;
+    animation: rotate 20s infinite linear;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.8);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes colorChange {
+    from {
+        color: #ff4b2b;
+    }
+    to {
+        color: #ffffff;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

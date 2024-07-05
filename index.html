@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather App</h1>
+        <input type="text" id="location-input" placeholder="Enter location">
+        <button id="get-weather-btn">Get Weather</button>
+        <div id="weather-result">
+            <!-- Weather data will be displayed here -->
+        </div>
+    </div>
+    <script>
+        document.getElementById('get-weather-btn').addEventListener('click', function() {
+            const location = document.getElementById('location-input').value;
+            if (location) {
+                fetch(`http://api.weatherapi.com/v1/current.json?key=a02b8e61e8b147a8b4633624242906&q=${location}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        const weatherResult = document.getElementById('weather-result');
+                        weatherResult.innerHTML = `
+                            <h2>Weather in ${data.location.name}</h2>
+                            <p>Temperature: ${data.current.temp_c}°C</p>
+                            <p>Condition: ${data.current.condition.text}</p>
+                            <p>Is_day: ${data.current.is_day}</p>
+                            <img src="${data.current.condition.icon}" alt="${data.current.condition.text}">
+                        `;
+                    })
+                    .catch(err => console.error(err));
+            } else {
+                alert('Please enter a location.');
+            }
+        });
+    </script>
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>
+
